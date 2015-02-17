@@ -1,7 +1,7 @@
 // Go support for Protocol Buffers - Google's data interchange format
 //
 // Copyright 2014 The Go Authors.  All rights reserved.
-// https://github.com/golang/protobuf
+// https://github.com/pguelpa/protobuf
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
@@ -35,7 +35,7 @@ import (
 	"testing"
 
 	pb "./proto3_proto"
-	"github.com/golang/protobuf/proto"
+	"github.com/pguelpa/protobuf/proto"
 )
 
 func TestProto3ZeroValues(t *testing.T) {

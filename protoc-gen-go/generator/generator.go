@@ -1145,7 +1145,7 @@ func (g *Generator) generateImports() {
 	// do, which is tricky when there's a plugin, just import it and
 	// reference it later. The same argument applies to the math package,
 	// for handling bit patterns for floating-point numbers.
-	g.P("import " + g.Pkg["proto"] + " " + strconv.Quote(g.ImportPrefix+"github.com/pguelpa/protobuf/proto"))
+	g.P("import " + g.Pkg["proto"] + " " + strconv.Quote("github.com/pguelpa/protobuf/proto"))
 	if !g.file.proto3 {
 		g.P("import " + g.Pkg["math"] + ` "math"`)
 	}
@@ -1155,7 +1155,7 @@ func (g *Generator) generateImports() {
 		if fd.PackageName() == g.packageName {
 			continue
 		}
-		filename := goFileName(s)
+		filename := goFileDir(s)
 		if substitution, ok := g.ImportMap[s]; ok {
 			filename = substitution
 		}
@@ -2000,6 +2000,10 @@ func goFileName(name string) string {
 		name = name[0 : len(name)-len(ext)]
 	}
 	return name + ".pb.go"
+}
+
+func goFileDir(name string) string {
+	return path.Dir(name)
 }
 
 // Is this field optional?
